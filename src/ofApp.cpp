@@ -7,7 +7,11 @@ void ofApp::setup()
     is.setup();
 }
 
-void ofApp::update(){}
+void ofApp::update()
+{
+    Globals::ELAPSEDTIME = ofGetElapsedTimef();
+    is.update();
+}
 
 void ofApp::draw()
 {

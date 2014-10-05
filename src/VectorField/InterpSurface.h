@@ -65,7 +65,7 @@ public:
     
     void update()
     {
-        
+        udpateWind();
     }
     
     void draw()
@@ -185,7 +185,11 @@ private:
     
     void udpateWind()
     {
-        loadAnemometer();
+        for (auto &a : ans)
+        {
+            a.debugUpdateWind();
+        }
+        
         
     }
     
