@@ -38,6 +38,7 @@ public:
         {
             spline2D.push_back(p);
         }
+        spline2D.push_back(pts.front());
         
         float step = 1.0 / numSample;
         for (float i = 0.0; i <= 1.0; i += step)
@@ -45,7 +46,6 @@ public:
             ofPoint p = spline2D.sampleAt(i);
             line.addVertex(p);
         }
-        line.setClosed(true);
     }
     
     void interpolateWind()
@@ -81,7 +81,7 @@ public:
         ofSetColor(col, 100);
         line.draw();
         
-        ofSetColor(ofColor::pink, 50);
+//        ofSetColor(ofColor::pink, 50);
         for (auto wp : wps)
         {
             float windSpeed = 40;

@@ -17,7 +17,7 @@
 #include "Contour.h"
 
 static const int CONNECTIONLINE_SAMPLE_NUM = 10;
-static const int CONTOUR_SAMPLE_NUM = 100;
+static const int CONTOUR_SAMPLE_NUM = 40;
 
 static ofPoint center;
 static bool sortPosClockwise(const WindAndPosition &a, const WindAndPosition &b)
@@ -86,12 +86,20 @@ public:
         
         for (auto a : ans)
         {
+            a.draw();
+        }
+        
+        for (auto a : ans)
+        {
             ofVec2f field = a.wind;
+            if (field != ofVec2f::zero())
+            {
             ofPushMatrix();
             ofTranslate(a.pos);
             ofSetColor(ofColor::pink);
             ofLine(0, 0, ofLerp(-windSpeed, windSpeed, field.x), ofLerp(-windSpeed, windSpeed, field.y));
             ofPopMatrix();
+            }
         }
     }
     
@@ -105,15 +113,58 @@ private:
     void loadAnemometerDebug()
     {
         ans.clear();
+        
+        float w = 50;
+        float h = 50;
         for (int i = 0; i < 20; i++)
         {
-            ofPoint pos;
-            pos.set(ofRandomWidth(), ofRandomHeight());
-            Anemometer a;
-            a.pos = pos;
-            a.wind = ofVec2f(ofRandomuf(), ofRandomuf());
-            ans.push_back(a);
+            ofPoint p;
+            
+            while (true)
+            {
+                float x = ofRandomWidth();
+                float y = ofRandomHeight();
+                p.set(x, y);
+                
+                bool bInside = false;
+                for (auto r : ans)
+                {
+                    ofPoint lt = p;
+                    ofPoint rt = ofPoint(p.x + w, p.y);
+                    ofPoint rb = ofPoint(p.x + w, p.y + h);
+                    ofPoint lb = ofPoint(p.x, p.y + h);
+                    vector<ofPoint> corners;
+                    corners.push_back(lt);
+                    corners.push_back(rt);
+                    corners.push_back(rb);
+                    corners.push_back(lb);
+                    float woff = w * 5;
+                    float hoff = h * 5;
+                    ofRectangle judgeR;
+                    judgeR.setPosition(r.pos.x - woff/2, r.pos.y - hoff/2);
+                    judgeR.setWidth(woff);
+                    judgeR.setHeight(hoff);
+                    for (auto c : corners)
+                    {
+                        if (judgeR.inside(c))
+                        {
+                            bInside = true;
+                            break;
+                        }
+                    }
+                }
+                
+                if (!bInside)
+                {
+                    Anemometer a;
+                    a.pos = p;
+                    a.wind = ofVec2f(ofRandomuf(), ofRandomuf());
+                    ans.push_back(a);
+                    break;
+                }
+            }
         }
+        
         Anemometer lt;
         lt.pos = ofPoint(0, 0);
         lt.wind = ofVec2f(0.0, 0.0);
@@ -281,27 +332,31 @@ private:
                     }
                 }
                 
-                if (windPoss.size())
+                if (i > CONNECTIONLINE_SAMPLE_NUM/3)
                 {
-                    ofPolyline line;
-                    for (auto wp : windPoss)
+                    if (windPoss.size())
                     {
-                        line.addVertex(wp.pos);
+                        ofPolyline line;
+                        for (auto wp : windPoss)
+                        {
+                            line.addVertex(wp.pos);
+                        }
+                        line.setClosed(true);
+                        center = line.getCentroid2D();
+                        line.clear();
+                        ofSort(windPoss, sortPosClockwise);
+                        for (auto wp : windPoss)
+                        {
+                            line.addVertex(wp.pos);
+                        }
+                        line.setClosed(true);
+                        Contour contour;
+                        contour.setup(line, windPoss, CONTOUR_SAMPLE_NUM);
+                        contour.interpolatePos();
+                        contour.interpolateWind();
+
+                        contours.push_back(contour);
                     }
-                    line.setClosed(true);
-                    center = line.getCentroid2D();
-                    line.clear();
-                    ofSort(windPoss, sortPosClockwise);
-                    for (auto wp : windPoss)
-                    {
-                        line.addVertex(wp.pos);
-                    }
-                    line.setClosed(true);
-                    Contour contour;
-                    contour.setup(line, windPoss, CONTOUR_SAMPLE_NUM);
-                    contour.interpolatePos();
-                    contour.interpolateWind();
-                    contours.push_back(contour);
                 }
             }
         }

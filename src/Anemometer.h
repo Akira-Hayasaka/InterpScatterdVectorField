@@ -15,8 +15,17 @@ class Anemometer
 {
 public:
     
+    void draw()
+    {
+        ofPushStyle();
+        ofSetColor(ofColor::red, 100);
+        ofCircle(pos, 6);
+        ofPopStyle();
+    }
+    
     ofPoint pos;
     ofVec2f wind;
+    
 };
 
 #endif

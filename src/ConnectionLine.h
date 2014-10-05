@@ -35,7 +35,7 @@ public:
     
     void draw()
     {
-//        line.draw();
+        line.draw();
         
         ofPushStyle();
         ofFill();
