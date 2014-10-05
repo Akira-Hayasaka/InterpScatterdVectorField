@@ -24,6 +24,14 @@ public:
         deltay = ofRandom(0.0, 10.0);
     }
     
+    void setup(ofPoint pos)
+    {
+        this->pos = pos;
+        wind = ofPtr<ofVec2f>(new ofVec2f);
+        wind->x = ofRandomuf();
+        wind->y = ofRandomuf();
+    }
+    
     void draw()
     {
         ofPushStyle();
@@ -37,14 +45,14 @@ public:
     
     void debugUpdateWind()
     {
-        wind.x = ofNoise(deltax);
-        wind.y = ofNoise(deltay);
+        wind->x = ofNoise(deltax);
+        wind->y = ofNoise(deltay);
         deltax += incx;
         deltay += incy;
     }
     
     ofPoint pos;
-    ofVec2f wind;
+    ofPtr<ofVec2f> wind;
   
     // debug
     float incx;

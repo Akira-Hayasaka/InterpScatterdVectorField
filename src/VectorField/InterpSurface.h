@@ -91,7 +91,7 @@ public:
         
         for (auto a : ans)
         {
-            ofVec2f field = a.wind;
+            ofVec2f field(a.wind->x, a.wind->y);
             if (field != ofVec2f::zero())
             {
             ofPushMatrix();
@@ -157,8 +157,7 @@ private:
                 if (!bInside)
                 {
                     Anemometer a;
-                    a.pos = p;
-                    a.wind = ofVec2f(ofRandomuf(), ofRandomuf());
+                    a.setup(p);
                     ans.push_back(a);
                     break;
                 }
@@ -166,17 +165,13 @@ private:
         }
         
         Anemometer lt;
-        lt.pos = ofPoint(0, 0);
-        lt.wind = ofVec2f(0.0, 0.0);
+        lt.setup(ofPoint(0, 0));
         Anemometer rt;
-        rt.pos = ofPoint(ofGetWidth(), 0);
-        rt.wind = ofVec2f(0.0, 0.0);
+        rt.setup(ofPoint(ofGetWidth(), 0));
         Anemometer rb;
-        rb.pos = ofPoint(ofGetWidth(), ofGetHeight());
-        rb.wind = ofVec2f(0.0, 0.0);
+        rb.setup(ofPoint(ofGetWidth(), ofGetHeight()));
         Anemometer lb;
-        lb.pos = ofPoint(0, ofGetHeight());
-        lb.wind = ofVec2f(0.0, 0.0);
+        lb.setup(ofPoint(0, ofGetHeight()));
         ans.push_back(lt);
         ans.push_back(rt);
         ans.push_back(rb);
@@ -190,7 +185,15 @@ private:
             a.debugUpdateWind();
         }
         
+        for (auto &cl : connectionLines)
+        {
+            cl.updateWindInterpolation();
+        }
         
+        for (auto &co : contours)
+        {
+            co.updateWindInterpolation();
+        }
     }
     
     void triabgulateAnemometers()
@@ -308,7 +311,7 @@ private:
         for (auto &c : connectionLines)
         {
             c.resample();
-            c.interpolateWind();
+            c.initialWindInterpolation();
         }
     }
     
@@ -357,7 +360,7 @@ private:
                         Contour contour;
                         contour.setup(line, windPoss, CONTOUR_SAMPLE_NUM);
                         contour.interpolatePos();
-                        contour.interpolateWind();
+                        contour.initialWindInterpolation();
 
                         contours.push_back(contour);
                     }

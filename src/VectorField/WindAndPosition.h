@@ -15,7 +15,7 @@ class WindAndPosition
 {
 public:
     
-    ofVec2f wind;
+    ofPtr<ofVec2f> wind;
     ofPoint pos;
 };
 

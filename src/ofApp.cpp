@@ -11,6 +11,9 @@ void ofApp::update()
 {
     Globals::ELAPSEDTIME = ofGetElapsedTimef();
     is.update();
+    
+    if (ofGetFrameNum() % 60 == 0)
+        ofLog() << "fps: " << ofGetFrameRate();
 }
 
 void ofApp::draw()
