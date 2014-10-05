@@ -26,7 +26,6 @@
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
-		E9A7183919DF974900EE6DCC /* ConnectionLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9A7183819DF974900EE6DCC /* ConnectionLine.cpp */; };
 		E9FF5E9B19DF646A007ED64D /* MSACoreGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9FF5E8319DF646A007ED64D /* MSACoreGL.cpp */; };
 		E9FF5EA919DF670B007ED64D /* Delaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9FF5EA419DF670B007ED64D /* Delaunay.cpp */; };
 		E9FF5EAA19DF670B007ED64D /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9FF5EA719DF670B007ED64D /* ofxDelaunay.cpp */; };
@@ -86,8 +85,12 @@
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
-		E9A7183819DF974900EE6DCC /* ConnectionLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConnectionLine.cpp; sourceTree = "<group>"; };
-		E9A7183D19DFA0A300EE6DCC /* Contour.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Contour.h; sourceTree = "<group>"; };
+		E9A7184319E0FC0700EE6DCC /* Anemometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Anemometer.h; sourceTree = "<group>"; };
+		E9A7184519E0FC0700EE6DCC /* ConnectionLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionLine.h; sourceTree = "<group>"; };
+		E9A7184619E0FC0700EE6DCC /* Contour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contour.h; sourceTree = "<group>"; };
+		E9A7184719E0FC0700EE6DCC /* InterpSurface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterpSurface.h; sourceTree = "<group>"; };
+		E9A7184819E0FC0700EE6DCC /* TriForInterp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriForInterp.h; sourceTree = "<group>"; };
+		E9A7184919E0FC0700EE6DCC /* WindAndPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindAndPosition.h; sourceTree = "<group>"; };
 		E9FF5E7F19DF646A007ED64D /* MSACore-Cinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MSACore-Cinder.h"; sourceTree = "<group>"; };
 		E9FF5E8019DF646A007ED64D /* MSACore-OF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MSACore-OF.h"; sourceTree = "<group>"; };
 		E9FF5E8119DF646A007ED64D /* MSACore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSACore.h; sourceTree = "<group>"; };
@@ -101,15 +104,10 @@
 		E9FF5E9619DF646A007ED64D /* MSAInterpolator2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAInterpolator2D.h; sourceTree = "<group>"; };
 		E9FF5E9719DF646A007ED64D /* MSAInterpolator3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAInterpolator3D.h; sourceTree = "<group>"; };
 		E9FF5E9819DF646A007ED64D /* MSAInterpolatorT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAInterpolatorT.h; sourceTree = "<group>"; };
-		E9FF5EA019DF66AA007ED64D /* Anemometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Anemometer.h; sourceTree = "<group>"; };
 		E9FF5EA419DF670B007ED64D /* Delaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Delaunay.cpp; sourceTree = "<group>"; };
 		E9FF5EA519DF670B007ED64D /* Delaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Delaunay.h; sourceTree = "<group>"; };
 		E9FF5EA719DF670B007ED64D /* ofxDelaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDelaunay.cpp; sourceTree = "<group>"; };
 		E9FF5EA819DF670B007ED64D /* ofxDelaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxDelaunay.h; sourceTree = "<group>"; };
-		E9FF5EC719DF7FCE007ED64D /* InterpSurface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterpSurface.h; sourceTree = "<group>"; };
-		E9FF5EC819DF8293007ED64D /* TriForInterp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TriForInterp.h; sourceTree = "<group>"; };
-		E9FF5EC919DF84A7007ED64D /* ConnectionLine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectionLine.h; sourceTree = "<group>"; };
-		E9FF5ECA19DF84B4007ED64D /* WindAndPosition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WindAndPosition.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,13 +212,8 @@
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
-				E9FF5EA019DF66AA007ED64D /* Anemometer.h */,
-				E9FF5EC719DF7FCE007ED64D /* InterpSurface.h */,
-				E9FF5EC819DF8293007ED64D /* TriForInterp.h */,
-				E9FF5ECA19DF84B4007ED64D /* WindAndPosition.h */,
-				E9FF5EC919DF84A7007ED64D /* ConnectionLine.h */,
-				E9A7183819DF974900EE6DCC /* ConnectionLine.cpp */,
-				E9A7183D19DFA0A300EE6DCC /* Contour.h */,
+				E9A7184219E0FC0700EE6DCC /* Anemometer */,
+				E9A7184419E0FC0700EE6DCC /* VectorField */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -232,6 +225,26 @@
 				E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */,
 			);
 			name = openFrameworks;
+			sourceTree = "<group>";
+		};
+		E9A7184219E0FC0700EE6DCC /* Anemometer */ = {
+			isa = PBXGroup;
+			children = (
+				E9A7184319E0FC0700EE6DCC /* Anemometer.h */,
+			);
+			path = Anemometer;
+			sourceTree = "<group>";
+		};
+		E9A7184419E0FC0700EE6DCC /* VectorField */ = {
+			isa = PBXGroup;
+			children = (
+				E9A7184519E0FC0700EE6DCC /* ConnectionLine.h */,
+				E9A7184619E0FC0700EE6DCC /* Contour.h */,
+				E9A7184719E0FC0700EE6DCC /* InterpSurface.h */,
+				E9A7184819E0FC0700EE6DCC /* TriForInterp.h */,
+				E9A7184919E0FC0700EE6DCC /* WindAndPosition.h */,
+			);
+			path = VectorField;
 			sourceTree = "<group>";
 		};
 		E9FF5E7A19DF646A007ED64D /* ofxMSACore */ = {
@@ -405,7 +418,6 @@
 				E9FF5EA919DF670B007ED64D /* Delaunay.cpp in Sources */,
 				E9FF5E9B19DF646A007ED64D /* MSACoreGL.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
-				E9A7183919DF974900EE6DCC /* ConnectionLine.cpp in Sources */,
 				E9FF5EAA19DF670B007ED64D /* ofxDelaunay.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 			);
