@@ -94,13 +94,29 @@ public:
             ofVec2f field(a.wind->x, a.wind->y);
             if (field != ofVec2f::zero())
             {
-            ofPushMatrix();
-            ofTranslate(a.pos);
-            ofSetColor(ofColor::pink);
-            ofLine(0, 0, ofLerp(-windSpeed, windSpeed, field.x), ofLerp(-windSpeed, windSpeed, field.y));
-            ofPopMatrix();
+                ofPushMatrix();
+                ofTranslate(a.pos);
+                ofSetColor(ofColor::pink);
+                ofLine(0, 0, ofLerp(-windSpeed, windSpeed, field.x), ofLerp(-windSpeed, windSpeed, field.y));
+                ofPopMatrix();
             }
         }
+    }
+    
+    vector<WindAndPosition> getWindAndPositions()
+    {
+        vector<WindAndPosition> rtn;
+        for (auto &c : contours)
+        {
+            for (int i = 0; i < c.getWindAndPositions().size(); i++)
+            {
+                WindAndPosition wp;
+                wp.wind = c.getWindAndPositions().at(i).wind;
+                wp.pos = c.getWindAndPositions().at(i).pos;
+                rtn.push_back(wp);
+            }
+        }
+        return rtn;
     }
     
 private:

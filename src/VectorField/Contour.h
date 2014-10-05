@@ -110,6 +110,11 @@ public:
         ofPopStyle();
     }
     
+    vector<WindAndPosition> getWindAndPositions()
+    {
+        return wps;
+    }
+    
 private:
     
     msa::Interpolator2D spline2D;

@@ -86,6 +86,7 @@
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
+		E9105C3C19E1126C005576FB /* VectorField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VectorField.h; sourceTree = "<group>"; };
 		E9A7184319E0FC0700EE6DCC /* Anemometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Anemometer.h; sourceTree = "<group>"; };
 		E9A7184519E0FC0700EE6DCC /* ConnectionLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionLine.h; sourceTree = "<group>"; };
 		E9A7184619E0FC0700EE6DCC /* Contour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contour.h; sourceTree = "<group>"; };
@@ -242,6 +243,7 @@
 		E9A7184419E0FC0700EE6DCC /* VectorField */ = {
 			isa = PBXGroup;
 			children = (
+				E9105C3C19E1126C005576FB /* VectorField.h */,
 				E9A7184719E0FC0700EE6DCC /* InterpSurface.h */,
 				E9A7184519E0FC0700EE6DCC /* ConnectionLine.h */,
 				E9A7184619E0FC0700EE6DCC /* Contour.h */,

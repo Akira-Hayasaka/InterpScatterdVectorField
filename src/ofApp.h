@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "Constants.h"
 #include "InterpSurface.h"
+#include "VectorField.h"
 
 class ofApp : public ofBaseApp
 {
@@ -22,4 +23,7 @@ public:
     void gotMessage(ofMessage msg);
     
     InterpSurface is;
+    VectorField vf;
+    bool toggleIS;
+    bool toggleVF;
 };
