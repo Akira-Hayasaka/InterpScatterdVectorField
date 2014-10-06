@@ -20,8 +20,8 @@ public:
     {
         incx = 0.004;
         incy = 0.003;
-        deltax = ofRandom(0.0, 10.0);
-        deltay = ofRandom(0.0, 10.0);
+        deltax = ofRandom(0.0, 0.8);
+        deltay = ofRandom(0.0, 0.8);
     }
     
     void setup(ofPoint pos)
@@ -35,12 +35,12 @@ public:
     void draw()
     {
         ofPushStyle();
-        ofSetColor(ofColor::red, 100);
+        ofSetColor(ofColor::red, 200);
         ofCircle(pos, 6);
         ofPopStyle();
         
-        incx = ofRandom(0.01, 0.02);
-        incy = ofRandom(0.01, 0.02);
+        incx = 0.0001;//ofRandom(0.01, 0.02);
+        incy = 0.0001;//ofRandom(0.01, 0.02);
     }
     
     void debugUpdateWind()

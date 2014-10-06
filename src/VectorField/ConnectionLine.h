@@ -88,7 +88,7 @@ public:
         ofSetColor(ofColor::blueSteel);
         for (int i = 0; i < line.getVertices().size(); i++)
         {
-            ofCircle(line.getVertices().at(i), 3);
+            ofCircle(line.getVertices().at(i), 4);
         }
         
         ofSetColor(ofColor::pink);

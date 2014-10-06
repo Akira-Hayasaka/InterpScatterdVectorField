@@ -94,10 +94,10 @@ public:
     void draw()
     {
         ofPushStyle();
-        ofSetColor(col, 100);
+        ofSetColor(col, 200);
         line.draw();
         
-//        ofSetColor(ofColor::pink, 50);
+        ofSetColor(col, 170);
         for (auto wp : wps)
         {
             float windSpeed = 40;

@@ -23,14 +23,17 @@ public:
         height = h;
         this->pos = pos;
         pollenMass = 0.2;
-        timeSpeed = 0.2;
+        timeSpeed = 0.02;
         col = ofColor(ofRandom(255), ofRandom(255), ofRandom(255));
+        radius = 4;
     }
     
     void update(ofVec2f field)
     {
+        
         float t = Globals::FRAMENUM * timeSpeed;
         float speed = (1 + ofNoise(t, field.x, field.y)) / pollenMass;
+//        radius = ofMap(speed, 5.0, 10.0, 2.0, 4.0, true);
         
         pos.x += ofLerp(-speed, speed, field.x);
         pos.y += ofLerp(-speed, speed, field.y);
@@ -47,12 +50,13 @@ public:
     {
         ofPushStyle();
         ofSetColor(col, 250);
-        ofCircle(pos, 4);
+        ofCircle(pos, radius);
         ofPopStyle();
     }
     
     ofPoint pos;
     ofColor col;
+    float radius;
     float pollenMass;
     float timeSpeed;
     float width;

@@ -16,7 +16,7 @@
 #include "ConnectionLine.h"
 #include "Contour.h"
 
-static const int CONNECTIONLINE_SAMPLE_NUM = 10;
+static const int CONNECTIONLINE_SAMPLE_NUM = 15;
 static const int CONTOUR_SAMPLE_NUM = 40;
 
 static ofPoint center;
