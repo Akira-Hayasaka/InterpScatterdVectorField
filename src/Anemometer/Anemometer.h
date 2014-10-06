@@ -18,8 +18,8 @@ public:
     
     Anemometer()
     {
-        incx = 0.01;
-        incy = 0.02;
+        incx = 0.006;
+        incy = 0.004;
         deltax = ofRandom(0.0, 10.0);
         deltay = ofRandom(0.0, 10.0);
     }

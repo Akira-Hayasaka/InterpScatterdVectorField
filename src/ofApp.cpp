@@ -4,12 +4,13 @@
 void ofApp::setup()
 {
     ofBackground(100, 100, 100);
+    ofSetFrameRate(60);
     
     is.setup();
     vf.setup(ofGetWidth(), ofGetHeight(), 30, 30,
              is.getWindAndPositions());
     
-    toggleIS = true;
+    toggleIS = false;
     toggleVF = true;
 }
 
@@ -17,6 +18,7 @@ void ofApp::update()
 {
     Globals::ELAPSEDTIME = ofGetElapsedTimef();
     is.update();
+    vf.update();
     
     if (ofGetFrameNum() % 60 == 0)
         ofLog() << "fps: " << ofGetFrameRate();
@@ -24,10 +26,10 @@ void ofApp::update()
 
 void ofApp::draw()
 {
-    if (toggleIS)
-        is.draw();
     if (toggleVF)
         vf.draw();
+    if (toggleIS)
+        is.draw();
 }
 
 void ofApp::keyPressed(int key)
