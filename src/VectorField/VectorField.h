@@ -23,7 +23,8 @@ public:
         height = h;
         this->pos = pos;
         pollenMass = 0.2;
-        timeSpeed = 0.02;
+        timeSpeed = 0.2;
+        col = ofColor(ofRandom(255), ofRandom(255), ofRandom(255));
     }
     
     void update(ofVec2f field)
@@ -45,12 +46,13 @@ public:
     void draw()
     {
         ofPushStyle();
-        ofSetColor(ofColor::cyan, 120);
+        ofSetColor(col, 250);
         ofCircle(pos, 4);
         ofPopStyle();
     }
     
     ofPoint pos;
+    ofColor col;
     float pollenMass;
     float timeSpeed;
     float width;
@@ -128,7 +130,7 @@ public:
         setupGrid(w, h, stepx, stepy);
         feedWindToGrid(is.getWindAndPositions());
         
-        int nTps = 2000;
+        int nTps = 1000;
         for (int i = 0; i < nTps; i++)
         {
             ofPoint pos = ofVec2f(ofRandom(0, ofGetWidth()),
@@ -142,6 +144,11 @@ public:
         fieldFbo.begin();
         ofClear(0);
         fieldFbo.end();
+        
+        rgbaFboFloat.allocate(w, h, GL_RGBA32F_ARB);
+        rgbaFboFloat.begin();
+        ofClear(0);
+        rgbaFboFloat.end();
     }
     
     void update()
@@ -161,17 +168,26 @@ public:
     void drawVectorField()
     {
         fieldFbo.draw(0, 0);
-     
-        debugUpdate();        
+
         for (auto c : grid)
         {
             c.debugDraw();
         }
-        
+
+        debugUpdate();
+        rgbaFboFloat.begin();
+        ofPushStyle();
+        ofFill();
+        ofSetColor(ofColor::white, 1);
+        ofRect(0, 0, rgbaFboFloat.getWidth(), rgbaFboFloat.getHeight());
         for (auto tp : tps)
         {
             tp.draw();
         }
+        ofPopStyle();        
+        rgbaFboFloat.end();
+
+        rgbaFboFloat.draw(0, 0);
     }
     
     void drawInterpSurface()
@@ -259,6 +275,8 @@ private:
     vector<TestParticle> tps;
     ofFbo fieldFbo;
     ofFloatPixels fieldPx;
+    
+    ofFbo rgbaFboFloat;
 };
 
 #endif

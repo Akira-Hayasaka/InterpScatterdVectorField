@@ -5,6 +5,7 @@ void ofApp::setup()
 {
     ofBackground(100, 100, 100);
     ofSetFrameRate(60);
+    ofEnableAlphaBlending();
     
     vf.setup(ofGetWidth(), ofGetHeight(), 70, 10);
     
