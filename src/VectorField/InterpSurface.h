@@ -130,8 +130,8 @@ private:
     {
         ans.clear();
         
-        float w = 50;
-        float h = 50;
+        float w = ofGetWidth() / 40;
+        float h = ofGetHeight() / 40;
         for (int i = 0; i < 20; i++)
         {
             ofPoint p;

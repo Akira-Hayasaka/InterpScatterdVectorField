@@ -11,4 +11,5 @@
 namespace Globals
 {
     float ELAPSEDTIME;
+    int FRAMENUM;
 }

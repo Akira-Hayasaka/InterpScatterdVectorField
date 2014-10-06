@@ -10,6 +10,7 @@
 #define Interp_VectorField_h
 
 #include "ofMain.h"
+#include "InterpSurface.h"
 #include "WindAndPosition.h"
 
 class TestParticle
@@ -27,14 +28,12 @@ public:
     
     void update(ofVec2f field)
     {
-        float t = ofGetFrameNum() * timeSpeed;
+        float t = Globals::FRAMENUM * timeSpeed;
         float speed = (1 + ofNoise(t, field.x, field.y)) / pollenMass;
         
-        // add the velocity of the particle to its position
         pos.x += ofLerp(-speed, speed, field.x);
         pos.y += ofLerp(-speed, speed, field.y);
         
-        // if we've moved outside of the screen, reinitialize randomly
         if (pos.x < 0 || pos.x > width ||
             pos.y < 0 || pos.y > height)
         {
@@ -122,13 +121,14 @@ class VectorField
 {
 public:
     
-    void setup(float w, float h, int stepx, int stepy,
-               vector<WindAndPosition> wps)
+    void setup(float w, float h, int stepx, int stepy)
     {
-        setupGrid(w, h, stepx, stepy);
-        feedWindToGrid(wps);
+        is.setup();
         
-        int nTps = 1000;
+        setupGrid(w, h, stepx, stepy);
+        feedWindToGrid(is.getWindAndPositions());
+        
+        int nTps = 2000;
         for (int i = 0; i < nTps; i++)
         {
             ofPoint pos = ofVec2f(ofRandom(0, ofGetWidth()),
@@ -146,6 +146,8 @@ public:
     
     void update()
     {
+        is.update();
+        
         fieldFbo.begin();
         ofClear(0);
         for (auto c : grid)
@@ -154,14 +156,13 @@ public:
         }
         fieldFbo.end();
         fieldFbo.readToPixels(fieldPx);
-        
-        debugUpdate();
     }
     
-    void draw()
+    void drawVectorField()
     {
         fieldFbo.draw(0, 0);
-        
+     
+        debugUpdate();        
         for (auto c : grid)
         {
             c.debugDraw();
@@ -173,10 +174,22 @@ public:
         }
     }
     
+    void drawInterpSurface()
+    {
+        is.draw();
+    }
+    
     ofVec2f getField(ofPoint pos)
     {
-        ofFloatColor fCol = fieldPx.getColor(pos.x, pos.y);
-        return ofVec2f(fCol.r, fCol.g);
+        if (pos.x < ofGetWidth() && pos.y < ofGetHeight())
+        {
+            ofFloatColor fCol = fieldPx.getColor(pos.x, pos.y);
+            return ofVec2f(fCol.r, fCol.g);
+        }
+        else
+        {
+            return ofVec2f::zero();
+        }
     }
     
 private:
@@ -239,6 +252,8 @@ private:
             }
         }
     }
+    
+    InterpSurface is;
     
     vector<GridCell> grid;
     vector<TestParticle> tps;

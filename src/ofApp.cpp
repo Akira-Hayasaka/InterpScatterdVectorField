@@ -6,9 +6,7 @@ void ofApp::setup()
     ofBackground(100, 100, 100);
     ofSetFrameRate(60);
     
-    is.setup();
-    vf.setup(ofGetWidth(), ofGetHeight(), 30, 30,
-             is.getWindAndPositions());
+    vf.setup(ofGetWidth(), ofGetHeight(), 70, 10);
     
     toggleIS = false;
     toggleVF = true;
@@ -17,7 +15,8 @@ void ofApp::setup()
 void ofApp::update()
 {
     Globals::ELAPSEDTIME = ofGetElapsedTimef();
-    is.update();
+    Globals::FRAMENUM = ofGetFrameNum();
+    
     vf.update();
     
     if (ofGetFrameNum() % 60 == 0)
@@ -27,9 +26,9 @@ void ofApp::update()
 void ofApp::draw()
 {
     if (toggleVF)
-        vf.draw();
+        vf.drawVectorField();
     if (toggleIS)
-        is.draw();
+        vf.drawInterpSurface();
 }
 
 void ofApp::keyPressed(int key)

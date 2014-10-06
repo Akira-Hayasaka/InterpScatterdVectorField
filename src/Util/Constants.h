@@ -14,6 +14,7 @@
 namespace Globals
 {
     extern float ELAPSEDTIME;
+    extern int FRAMENUM;
 }
 
 #endif
